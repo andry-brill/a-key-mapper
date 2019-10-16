@@ -81,10 +81,14 @@ namespace Library
                 { Keys.K, Keys.D5 },
                 { Keys.L, Keys.D6 },
                 { Keys.Oemtilde, Keys.D0 },
-                
+
                 { Keys.M, Keys.D1 },
                 { Keys.Oemcomma, Keys.D2 },
-                { Keys.OemPeriod, Keys.D3 }
+                { Keys.OemPeriod, Keys.D3 },
+
+                // for Git Bash
+                { Keys.C, new int[] { (int)Keys.LControlKey, (int)Keys.Insert, -(int)Keys.Insert, -(int)Keys.LControlKey } },
+                { Keys.V, new int[] { (int)Keys.LShiftKey, (int)Keys.Insert, -(int)Keys.Insert, -(int)Keys.LShiftKey } },
             };
         }
 
