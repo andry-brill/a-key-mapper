@@ -79,8 +79,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeysMappings.cs" />
-    <Compile Include="KeyModifier.cs" />
+    <Compile Include="KeyboardCallback.cs" />
+    <Compile Include="KeyMappings.cs" />
+    <Compile Include="KeyDictionary.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="KeyboardListener.cs" />
     <Compile Include="Keyboard.cs" />
@@ -89,7 +90,7 @@
     <Compile Include="KeyMapper.cs" />
     <Compile Include="KeysExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="KeysSender.cs" />
+    <Compile Include="KeySender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

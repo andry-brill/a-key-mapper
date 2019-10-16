@@ -1,24 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
+using WindowsInput.Native;
 
 namespace Library
 {
     public static class KeysExtensions
     {
-        public static string ToKey(this KeyModifier modifier)
-        {
-            switch (modifier)
-            {
-                case KeyModifier.Alt:
-                    return "%";
-                case KeyModifier.Ctrl:
-                    return "^";
-                case KeyModifier.Shift:
-                    return "+";
-                default:
-                    return "";
-
-            }
-        }
 
         public static bool IsAlt(this Keys key)
         {
@@ -35,18 +22,14 @@ namespace Library
             }
         }
 
-        public static bool IsShift(this Keys key)
+        public static bool IsLShift(this Keys key)
         {
-            switch (key)
-            {
-                case Keys.Shift:
-                case Keys.ShiftKey:
-                case Keys.LShiftKey:
-                case Keys.RShiftKey:
-                    return true;
-                default:
-                    return false;
-            }
+            return key == Keys.LShiftKey;
+        }
+
+        public static bool IsRShift(this Keys key)
+        {
+            return key == Keys.RShiftKey;
         }
 
         public static bool IsCtrl(this Keys key)
@@ -74,12 +57,29 @@ namespace Library
 
         public static bool IsModifier(this Keys key)
         {
-            return key.IsAlt() || key.IsCtrl() || key.IsShift() || key.IsAlpha() || key.IsBetta();
+            return key.IsAlt() || key.IsCtrl() || key.IsLShift() || key.IsRShift() || key.IsAlpha() || key.IsBetta();
         }
 
         public static bool IsNumber (this Keys key)
         {
             return Keys.D0 <= key && key <= Keys.D9;
+        }
+
+        public static VirtualKeyCode ToVitual(this Keys key)
+        {
+            switch (key)
+            {
+                case Keys.None:
+                case Keys.LineFeed:
+                case Keys.KeyCode:
+                case Keys.Modifiers:
+                case Keys.Alt:
+                case Keys.Control:
+                case Keys.Shift:
+                    throw new Exception("Unsupported key: " + key);
+                default:
+                    return (VirtualKeyCode)key;
+            }
         }
     }
 }

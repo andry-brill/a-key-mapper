@@ -6,16 +6,16 @@ namespace Library
     public class KeyMapper
     {
         private static readonly KeyboardState KeyboardState;
-        private static readonly KeysSender KeysSender;
-        private static readonly KeysMappings KeysMappings;
+        private static readonly KeySender KeySender;
+        private static readonly KeyMappings KeyMappings;
 
         static KeyMapper()
         {
-            KeysSender = new KeysSender();
-            KeysSender.OnBeforeSend += () => KeyboardListener.TogglePause(keyboardListener, true);
-            KeysSender.OnAfterSend += () => KeyboardListener.TogglePause(keyboardListener, false);
+            KeySender = new KeySender();
+            KeySender.OnBeforeSend += () => keyboardListener?.Pause(true);
+            KeySender.OnAfterSend += () => keyboardListener?.Pause(false);
 
-            KeysMappings = new KeysMappings(KeysSender);
+            KeyMappings = new KeyMappings(KeySender);
 
             KeyboardState = new KeyboardState();
         }
@@ -28,8 +28,8 @@ namespace Library
             Stop();
 
             keyboardListener = new KeyboardListener(KeyboardState);
-            keyboardListener.OnKey += KeysMappings.OnKey;
-
+            foreach (var mapper in KeyMappings.Mappings)
+                keyboardListener.OnKey += mapper;
         }
 
         public static void Stop()

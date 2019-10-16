@@ -1,81 +1,56 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Library
 {
+    public delegate void OnKeyListener(KeyboardEvent keyboardEvent);
+
     public class KeyboardListener: IDisposable
     {
-        // KeyboardListener start stop onKey
-        private const int WM_KEYDOWN = 0x0100, WM_KEYUP = 0x0101;
-        private const int WM_SYSKEYDOWN = 0x0104, WM_SYSKEYUP = 0x0105;
+        public event OnKeyListener OnKey;
 
-        public event Action<KeyboardEvent> OnKey;
-        
-        private readonly IntPtr HookID;
         private readonly KeyboardState KeyboardState;
-        private readonly Keyboard.LowLevelKeyboardProc LowLevelKeyboardProc;
+        private readonly Keyboard.Callback KeyboardCallback;
 
-        public bool Pause { get; set; } = false;
-
-        public static void TogglePause(KeyboardListener keyboardListener, bool pause)
+        private bool paused = false;
+        public void Pause(bool p)
         {
-            if (keyboardListener != null) keyboardListener.Pause = pause;
+            paused = p;
         }
 
         public KeyboardListener(KeyboardState keyboardState)
         {
             KeyboardState = keyboardState;
-            LowLevelKeyboardProc = new Keyboard.LowLevelKeyboardProc(HookCallback);
-            HookID = Keyboard.SetHook(LowLevelKeyboardProc);
+            KeyboardCallback = new Keyboard.Callback(Callback);
         }
 
-        private IntPtr HookCallback(int nCode, IntPtr wParam, ref Keyboard.KBDLLHOOKSTRUCT lParam)
+        private bool Callback(Keys key, bool isKeyDown)
         {
-            Logger.Log("HookCallback");
-
-            if (nCode < 0 || OnKey == null || Pause)
+            if (OnKey == null || paused)
             {
-                return Keyboard.CallNextHookEx(HookID, nCode, wParam, ref lParam);
+                Logger.Log("Ignored");
+                return false;
             }
 
-            var eventType = (int)wParam;
-            switch (eventType)
+            KeyboardState.UpdateState(key, isKeyDown);
+            
+            if (isKeyDown)
             {
-                case WM_SYSKEYDOWN:
-                case WM_KEYDOWN:
-                    Logger.Log("Keydown " + lParam);
-                    KeyboardState.UpdateState(lParam.Key, true);
+                Logger.Log("OnKey: " + key);
 
-                    var keyboardEvent = new KeyboardEvent(lParam.Key, KeyboardState);
-                    OnKey(keyboardEvent);
-
-                    if (keyboardEvent.Cancel)
-                    {
-                        return (IntPtr)1;
-                    }
-                    break;
-                case WM_SYSKEYUP:
-                case WM_KEYUP:
-                    Logger.Log("Keyup " + lParam);
-                    KeyboardState.UpdateState(lParam.Key, false);
-                    break;
+                var keyboardEvent = new KeyboardEvent(key, KeyboardState);
+                OnKey(keyboardEvent);
+                return keyboardEvent.Cancel;
             }
 
-            return Keyboard.CallNextHookEx(HookID, nCode, wParam, ref lParam);
+            return false;
 
         }
-
-        #region IDisposable Support
-        private bool disposedValue = false;
 
         public void Dispose()
         {
-            if (!disposedValue)
-            {
-                Keyboard.UnhookWindowsHookEx(HookID);
-                disposedValue = true;
-            }
+            KeyboardCallback.Dispose();
         }
 
-        #endregion
     }
 }

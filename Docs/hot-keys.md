@@ -6,12 +6,13 @@
 | ---- | ------ | ---- | ------ |
 | 00_3A | Caps Lock | 00_38 |Left Alt | 
 | 00_2A | Left Shift | 0064 |F13 | 
-| 00_56 | <> | 00_1D |Left Ctrl | 
-| 00_1D | Left Ctrl | 00_2A | Left Shift | 
+| 00_56 | <> | 00_2A | Left Shift __[*]__ |
 | E0_5B | Left Windows | 00_65 | F14 |  
 | 00_38 | Left Alt | E0_5B | Left Windows | 
 | E0_1D | Right Ctrl | 00_66 | F15 |   
 | 00_1B | ]} | 00_56 | <> | 
+
+ __NB! __[*]__ - Works as Ctrl on the left part of keyboards letters__
 
 ## Keybindings
 

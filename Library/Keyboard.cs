@@ -1,45 +1,30 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-using System.Windows.Forms;
 
 namespace Library
 {
     public static partial class Keyboard
     {
+        private static readonly IntPtr MainWindowHandle;
+
+        static Keyboard()
+        {
+            MainWindowHandle = Process.GetCurrentProcess().MainWindowHandle;
+        }
+
+
         private const int WH_KEYBOARD_LL = 13;
+        private const int WM_KEYDOWN = 0x0100, WM_KEYUP = 0x0101;
+        private const int WM_SYSKEYDOWN = 0x0104, WM_SYSKEYUP = 0x0105;
 
         public static IntPtr SetHook(LowLevelKeyboardProc callback)
         {
-            using (Process process = Process.GetCurrentProcess())
-            using (ProcessModule module = process.MainModule)
-            {
-                return SetWindowsHookEx(WH_KEYBOARD_LL, callback, GetModuleHandle(module.ModuleName), 0);
-            }
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct KBDLLHOOKSTRUCT
-        {
-            public int vkCode;
-            public int scanCode;
-            public int flags;
-            public int time;
-            public IntPtr dwExtraInfo;
-
-            public override string ToString()
-            {
-                return "Key: " + Key + " Code: " + vkCode;
-            }
-
-            public Keys Key
-            {
-                get { return (Keys)vkCode; }
-            }
+            return SetWindowsHookEx(WH_KEYBOARD_LL, callback, MainWindowHandle, 0);
         }
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
+        public delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
@@ -49,8 +34,7 @@ namespace Library
         public static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
-
+        public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
