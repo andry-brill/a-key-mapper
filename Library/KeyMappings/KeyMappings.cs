@@ -61,6 +61,7 @@ namespace KeyMapperLibrary
             alphaCheck = (key, state) => !state.Betta && (state.Alt || state.Ctrl || state.Alpha);
             alphaKeys = new KeyDictionary
             {
+                { Keys.Y, Keys.Escape },
                 { Keys.U, Keys.Enter },
                 { Keys.I, Keys.Up },
                 { Keys.O, Keys.PageUp },
