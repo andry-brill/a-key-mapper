@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Library
+namespace KeyMapperLibrary
 {
     public class KeyMapper
     {

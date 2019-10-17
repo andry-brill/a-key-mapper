@@ -2,9 +2,9 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
-using Library;
+using KeyMapperLibrary;
 
-namespace KeyMapper
+namespace KeyMapperApplication
 {
     static class Program
     {
@@ -27,17 +27,10 @@ namespace KeyMapper
                 return;
             }
 
-            Library.KeyMapper.Start();
+            KeyMapper.Start();
             Application.Run();
-            Library.KeyMapper.Stop();
+            KeyMapper.Stop();
         }
-
-        //    IntPtr hwnd = GetForegroundWindow();
-        //    uint pid;
-        //    GetWindowThreadProcessId(hwnd, out pid);
-        //    Process p = Process.GetProcessById((int)pid);
-        //    PostMessage(process.MainWindowHandle, WM_SYSKEYDOWN, 0x11, 0);
-        //    PostMessage(process.MainWindowHandle, WM_KEYDOWN, 0x70, 0);
 
     }
 }

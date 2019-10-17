@@ -1,22 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Library
+namespace KeyMapperLibrary
 {
-    public delegate bool KeyLinstener(Keys keys, KeyboardState keyboardState);
-
     public class KeyMappings
     {
+        public delegate bool KeyLinstener(Keys keys, KeyboardState keyboardState);
 
-        private readonly static KeyLinstener  shiftCheck, disableCheck, pureCheck, alphaCheck, bettaCheck;
-        private readonly static KeyDictionary shiftKeys,  disableKeys,  pureKeys,  alphaKeys,  bettaKeys;
+        private readonly static KeyLinstener  lShiftCheck, shiftCheck, disableCheck, pureCheck, alphaCheck, bettaCheck;
+        private readonly static KeyDictionary lShiftKeys,  shiftKeys,  disableKeys,  pureKeys,  alphaKeys,  bettaKeys;
 
         static KeyMappings()
         {
-            shiftCheck = (key, state) => state.LShift && !state.Alpha && !state.Betta && !state.Alt && !state.Ctrl;
-            shiftKeys = new KeyDictionary();
-            foreach (var key in new HashSet<Keys>() { Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.Z, Keys.X, Keys.C, Keys.V })
-                shiftKeys.Add(key, new int[] { -(int)Keys.LShiftKey, (int)Keys.LControlKey, (int)key, -(int)key, -(int)Keys.LControlKey, (int)Keys.LShiftKey });
+            lShiftCheck = (key, state) => state.LShift && !state.Alpha && !state.Betta && !state.Alt && !state.Ctrl;
+            lShiftKeys = new KeyDictionary();
+            foreach (var key in new [] { 
+                Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, 
+                Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, 
+                Keys.Z, Keys.X, Keys.C, Keys.V, 
+                Keys.Space 
+            })
+            {
+                lShiftKeys.Add(key, KS.Up(Keys.LShiftKey).Down(Keys.LControlKey, key).Build());
+            }
+
+            shiftCheck = (key, state) => state.LShift || state.RShift;
+            shiftKeys = new KeyDictionary
+            {
+                { Keys.OemQuestion, "\"" }
+            };
 
             disableCheck = (key, state) => true;
             disableKeys = new KeyDictionary
@@ -87,8 +99,8 @@ namespace Library
                 { Keys.OemPeriod, Keys.D3 },
 
                 // for Git Bash
-                { Keys.C, new int[] { (int)Keys.LControlKey, (int)Keys.Insert, -(int)Keys.Insert, -(int)Keys.LControlKey } },
-                { Keys.V, new int[] { (int)Keys.LShiftKey, (int)Keys.Insert, -(int)Keys.Insert, -(int)Keys.LShiftKey } },
+                { Keys.C, KS.Down(Keys.LControlKey, Keys.Insert).Build() },
+                { Keys.V, KS.Down(Keys.LShiftKey, Keys.Insert).Build() },
             };
         }
 
@@ -102,6 +114,7 @@ namespace Library
             Add((key, state) => key.IsAlpha() || key.IsBetta());
 
             Add("Shift", shiftCheck, shiftKeys);
+            Add("LShift", lShiftCheck, lShiftKeys);
             Add("Disables", disableCheck, disableKeys);
             Add("Pure", pureCheck, pureKeys);
             Add("Alpha", alphaCheck, alphaKeys);

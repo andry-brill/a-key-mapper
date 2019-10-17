@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using WindowsInput.Native;
 
-namespace Library
+namespace KeyMapperLibrary
 {
     public static class KeysExtensions
     {

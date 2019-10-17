@@ -71,9 +71,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library\Library.csproj">
+    <ProjectReference Include="..\Library\KeyMapperLibrary.csproj">
       <Project>{df783852-3922-44a6-b0b3-3054abf74f13}</Project>
-      <Name>Library</Name>
+      <Name>KeyMapperLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

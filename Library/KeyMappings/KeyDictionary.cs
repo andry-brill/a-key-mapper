@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Library
+namespace KeyMapperLibrary
 {
     public class KeyDictionary: Dictionary<Keys, object>
     {

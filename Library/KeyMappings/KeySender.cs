@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using WindowsInput;
 
-namespace Library
+namespace KeyMapperLibrary
 {
 
     public class KeySender

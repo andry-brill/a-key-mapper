@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace Library
+namespace KeyMapperLibrary
 {
     public static partial class Keyboard
     {

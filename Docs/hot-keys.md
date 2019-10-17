@@ -1,18 +1,23 @@
 
+## Keyboard modifications
+
+1. __Alpha (F13)__ and __Betta (F14)__ keys
+2. __Smart Left Shift__ works as Ctrl on the left part of keyboards letters
+3. Letters on the right part of keyboard is reserved and uses in mappings as soft-keys
 
 ## Keyboard mapping
 
 | From || To ||
 | ---- | ------ | ---- | ------ |
 | 00_3A | Caps Lock | 00_38 |Left Alt | 
-| 00_2A | Left Shift | 0064 |F13 | 
-| 00_56 | <> | 00_2A | Left Shift __[*]__ |
-| E0_5B | Left Windows | 00_65 | F14 |  
+| 00_2A | Left Shift | 0064 |F13 __(Alpha)__ | 
+| 00_56 | <> | 00_2A | __Smart Left Shift__ |
+| E0_5B | Left Windows | 00_65 | F14 __(Betta)__ |  
 | 00_38 | Left Alt | E0_5B | Left Windows | 
 | E0_1D | Right Ctrl | 00_66 | F15 |   
 | 00_1B | ]} | 00_56 | <> | 
 
- __NB! __[*]__ - Works as Ctrl on the left part of keyboards letters__
+ 
 
 ## Keybindings
 
@@ -69,5 +74,5 @@ On changes sync the next files:
 || Shift+Space | Align code by spaces |
 |◆| __Misc__
 || Ctrl+' | Toggle quotes '->"->` |
-|| Ctrl+I | Organize imports |
+|| Ctrl+< | Organize imports |
 || F13 | Run action |

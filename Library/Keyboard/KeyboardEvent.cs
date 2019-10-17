@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Library
+namespace KeyMapperLibrary
 {
  
     public class KeyboardEvent

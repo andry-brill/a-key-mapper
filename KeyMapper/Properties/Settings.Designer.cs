@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KeyMapper.Properties
+namespace KeyMapperApplication.Properties
 {
 
 

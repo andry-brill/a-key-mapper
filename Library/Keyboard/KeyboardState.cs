@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace Library
+namespace KeyMapperLibrary
 {
     public class KeyboardState
     {

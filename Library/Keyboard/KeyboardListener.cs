@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Library
+namespace KeyMapperLibrary
 {
     public delegate void OnKeyListener(KeyboardEvent keyboardEvent);
 
@@ -26,13 +26,13 @@ namespace Library
 
         private bool Callback(Keys key, bool isKeyDown)
         {
+            KeyboardState.UpdateState(key, isKeyDown);
+            
             if (OnKey == null || paused)
             {
                 Logger.Log("Ignored");
                 return false;
             }
-
-            KeyboardState.UpdateState(key, isKeyDown);
             
             if (isKeyDown)
             {
@@ -44,7 +44,6 @@ namespace Library
             }
 
             return false;
-
         }
 
         public void Dispose()
