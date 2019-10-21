@@ -48,7 +48,7 @@
     "command": "wwm.aligncode"
   },
   {
-    "key": "ctrl+oem_7",
+    "key": "ctrl+alt+oem_7",
     "command": "quokka.makeQuokkaFromExistingFile",
     "when": "!quokka.isLiveShareClient && !terminalFocus"
   },
@@ -58,7 +58,7 @@
     "when": "!quokka.isLiveShareClient && !terminalFocus"
   },
   {
-    "key": "ctrl+shift+oem_7",
+    "key": "ctrl+shift+alt+oem_7",
     "command": "quokka.stopCurrent",
     "when": "!quokka.isLiveShareClient && !terminalFocus"
   },
@@ -112,7 +112,7 @@
     "command": "-workbench.action.gotoSymbol"
   },
   {
-    "key": "ctrl+i",
+    "key": "ctrl+oem_102",
     "command": "editor.action.organizeImports",
     "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)source\\.organizeImports\\b/"
   },
@@ -304,7 +304,7 @@
     "when": "inFilesPicker && inQuickOpen"
   },
   {
-    "key": "ctrl+shift+e",
+    "key": "ctrl+e",
     "command": "workbench.action.quickOpen"
   },
   {
@@ -314,10 +314,6 @@
   {
     "key": "ctrl+t",
     "command": "-workbench.action.showAllSymbols"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "workbench.action.gotoSymbol"
   },
   {
     "key": "ctrl+shift+w",
@@ -379,7 +375,7 @@
     "when": "inFilesPicker && inQuickOpen"
   },
   {
-    "key": "f13",
+    "key": "f1",
     "command": "workbench.action.showCommands"
   },
   {
@@ -423,5 +419,13 @@
     "key": "ctrl+oem_period",
     "command": "-editor.action.quickFix",
     "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "f1",
+    "command": "-workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+oem_5",
+    "command": "-workbench.action.splitEditor"
   }
 ]
