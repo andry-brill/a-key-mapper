@@ -9,7 +9,6 @@ namespace KeyMapperLibrary
 
         public static bool IsAlt(this Keys key)
         {
-
             switch (key)
             {
                 case Keys.Alt:
@@ -53,11 +52,6 @@ namespace KeyMapperLibrary
         public static bool IsBetta(this Keys key)
         {
             return key == Keys.F14;
-        }
-
-        public static bool IsModifier(this Keys key)
-        {
-            return key.IsAlt() || key.IsCtrl() || key.IsLShift() || key.IsRShift() || key.IsAlpha() || key.IsBetta();
         }
 
         public static bool IsNumber (this Keys key)

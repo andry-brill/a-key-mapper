@@ -24,9 +24,10 @@ namespace KeyMapperLibrary
 
             private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
             {
-                Logger.Log("HookCallback");
+                bool isLockScreen = Window.IsLockScreen;
+                Logger.Log("HookCallback: " + nCode + " IsLockScreen: " + isLockScreen);
 
-                if (nCode < 0)
+                if (nCode < 0 || isLockScreen) // ignoring key events during PC-lock because key-up event not triggered
                 {
                     return CallNextHookEx(HookID, nCode, wParam, lParam);
                 }
@@ -38,13 +39,13 @@ namespace KeyMapperLibrary
 
                 if (eventType == WM_KEYDOWN || eventType == WM_SYSKEYDOWN)
                 {
-                    Logger.Log("Keydown Key: " + key + " Code: " + vkCode);
+                    Logger.Log("Down Key: " + key + " Code: " + vkCode);
                     cancel = Function(key, true);
                 }
 
                 if (eventType == WM_KEYUP || eventType == WM_SYSKEYUP)
                 {
-                    Logger.Log("Keyup Key: " + key + " Code: " + vkCode);
+                    Logger.Log("Up Key: " + key + " Code: " + vkCode);
                     cancel = Function(key, false);
                 }
 

@@ -83,6 +83,7 @@
     <Compile Include="KeyMappings\KeyMappings.cs" />
     <Compile Include="KeyMappings\KeyDictionary.cs" />
     <Compile Include="KeyMappings\KeySequience.cs" />
+    <Compile Include="Utils\Window.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Keyboard\KeyboardListener.cs" />
     <Compile Include="Keyboard\Keyboard.cs" />

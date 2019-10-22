@@ -6,13 +6,6 @@ namespace KeyMapperLibrary
 {
     public static partial class Keyboard
     {
-        private static readonly IntPtr MainWindowHandle;
-
-        static Keyboard()
-        {
-            MainWindowHandle = Process.GetCurrentProcess().MainWindowHandle;
-        }
-
 
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100, WM_KEYUP = 0x0101;
@@ -20,6 +13,7 @@ namespace KeyMapperLibrary
 
         public static IntPtr SetHook(LowLevelKeyboardProc callback)
         {
+            IntPtr MainWindowHandle = Process.GetCurrentProcess().MainWindowHandle;
             return SetWindowsHookEx(WH_KEYBOARD_LL, callback, MainWindowHandle, 0);
         }
 
@@ -38,5 +32,6 @@ namespace KeyMapperLibrary
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
+
     }
 }
