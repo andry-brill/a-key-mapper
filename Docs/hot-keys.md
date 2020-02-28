@@ -48,6 +48,9 @@ On changes sync the next files:
 || Ctrl+Shift+F | Find in files |
 || Alt+F | Find definition in file _(Ctrl+Mouse)_ |
 || Alt+Shift+F | Find all usages in files |
+|◆| __N__
+|| Ctrl+N | New file |
+|| Ctrl+Shift+N | New folder 
 |◆| __R__
 || Ctrl+R | Replace in file |
 || Ctrl+Shift+R | Replace in files |

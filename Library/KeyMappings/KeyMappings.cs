@@ -27,7 +27,8 @@ namespace KeyMapperLibrary
             shiftCheck = (key, state) => state.LShift || state.RShift;
             shiftKeys = new KeyDictionary
             {
-                { Keys.OemQuestion, "\"" }
+                { Keys.OemQuestion, "\"" },
+                { Keys.Oem5, "`" }
             };
 
             disableCheck = (key, state) => true;
@@ -61,10 +62,9 @@ namespace KeyMapperLibrary
             alphaCheck = (key, state) => !state.Betta && (state.Alt || state.Ctrl || state.Alpha);
             alphaKeys = new KeyDictionary
             {
-                { Keys.Y, Keys.Escape },
                 { Keys.U, Keys.Enter },
                 { Keys.I, Keys.Up },
-                { Keys.O, Keys.PageUp },
+                { Keys.O, Keys.Escape },
 
                 { Keys.H, Keys.Home },
                 { Keys.J, Keys.Left },
@@ -73,8 +73,8 @@ namespace KeyMapperLibrary
                 { Keys.Oemtilde, Keys.End },
 
                 { Keys.M, Keys.Delete },
-                { Keys.Oemcomma, Keys.Back },
-                { Keys.OemPeriod, Keys.PageDown },
+                { Keys.Oemcomma, Keys.Down },
+                { Keys.OemPeriod, Keys.Back },
 
                 { Keys.D7, "{" },
                 { Keys.D8, "[" },
@@ -88,6 +88,7 @@ namespace KeyMapperLibrary
                 { Keys.U, Keys.D7 },
                 { Keys.I, Keys.D8 },
                 { Keys.O, Keys.D9 },
+                { Keys.P, Keys.PageUp },
 
                 { Keys.H, "%" },
                 { Keys.J, Keys.D4 },
@@ -98,6 +99,7 @@ namespace KeyMapperLibrary
                 { Keys.M, Keys.D1 },
                 { Keys.Oemcomma, Keys.D2 },
                 { Keys.OemPeriod, Keys.D3 },
+                { Keys.OemMinus, Keys.PageDown },
 
                 // for Git Bash
                 { Keys.C, KS.Down(Keys.LControlKey, Keys.Insert).Build() },

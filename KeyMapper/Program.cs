@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -26,11 +27,37 @@ namespace KeyMapperApplication
                 MessageBox.Show("KeyMapper already running");
                 return;
             }
+            try {
+                KeyMapper.Start();
+                Application.Run();
+                KeyMapper.Stop();
+            } catch (Exception e)
+            {
+                using (StreamWriter sw = File.AppendText("log.txt"))
+                {
+                    sw.WriteLine("Exit with error: " + DateTime.Now);
+                    LogException(sw, e);
+                }
 
-            KeyMapper.Start();
-            Application.Run();
-            KeyMapper.Stop();
+                throw e;
+            }
+        }
+
+        private static void LogException(StreamWriter sw, Exception e)
+        {
+            sw.WriteLine(e.Message);
+            sw.WriteLine(e.StackTrace);
+
+            if (e.InnerException != null)
+            {
+                sw.WriteLine("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-");
+                LogException(sw, e.InnerException);
+            } else
+            {
+                sw.WriteLine("===================================");
+            }
         }
 
     }
+
 }
