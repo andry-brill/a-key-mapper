@@ -7,59 +7,71 @@ namespace KeyMapperLibrary
     {
         public delegate bool KeyLinstener(Keys keys, KeyboardState keyboardState);
 
-        private readonly static KeyLinstener  lShiftCheck, shiftCheck, disableCheck, pureCheck, alphaCheck, bettaCheck;
-        private readonly static KeyDictionary lShiftKeys,  shiftKeys,  disableKeys,  pureKeys,  alphaKeys,  bettaKeys;
+        private readonly static KeyLinstener pureTest, unshiftTest, shiftTest, alphaTest, bettaTest;
+        private readonly static KeyDictionary pureKeys, unshiftKeys, shiftKeys, alphaKeys, bettaKeys;
 
         static KeyMappings()
         {
-            lShiftCheck = (key, state) => state.LShift && !state.Alpha && !state.Betta && !state.Alt && !state.Ctrl;
-            lShiftKeys = new KeyDictionary();
-            foreach (var key in new [] { 
-                Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, 
-                Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, 
-                Keys.Z, Keys.X, Keys.C, Keys.V, 
-                Keys.Space 
-            })
-            {
-                lShiftKeys.Add(key, KS.Up(Keys.LShiftKey).Down(Keys.LControlKey, key).Build());
-            }
 
-            shiftCheck = (key, state) => state.LShift || state.RShift;
-            shiftKeys = new KeyDictionary
-            {
-                { Keys.OemQuestion, "\"" },
-                { Keys.Oem5, "`" }
-            };
-
-            disableCheck = (key, state) => true;
-            disableKeys = new KeyDictionary
-            {
-                { Keys.Delete, Keys.None },
-                { Keys.Back, Keys.None },
-                { Keys.Enter, Keys.None },
-
-                { Keys.Up, Keys.None },
-                { Keys.Left, Keys.None },
-                { Keys.Down, Keys.None },
-                { Keys.Right, Keys.None }
-            };
-
-            pureCheck = (key, state) => !state.Any;
+            pureTest = (key, state) => !state.Any;
             pureKeys = new KeyDictionary
             {
-                { Keys.D1, "!" },
-                { Keys.D2, "@" },
-                { Keys.D3, "#" },
-                { Keys.D4, "$" },
-                { Keys.D5, "*" },
-                { Keys.D6, "&" },
-                { Keys.D7, "/" },
-                { Keys.D8, "(" },
-                { Keys.D9, ")" },
-                { Keys.D0, "=" }
+                { Keys.OemMinus, "+" },
+                { Keys.OemQuestion, "-" },
+                { Keys.OemOpenBrackets, "=" },
+
+                { Keys.Oemplus, "æ" },
+                { Keys.Oem6, "ø" },
+                { Keys.Oem5, "å" },
+
+                { Keys.Oem1, "'" }
             };
 
-            alphaCheck = (key, state) => !state.Betta && (state.Alt || state.Ctrl || state.Alpha);
+            unshiftTest = (key, state) => !state.LShift && !state.RShift;
+            unshiftKeys = new KeyDictionary
+            {
+                { Keys.Oemtilde, "$" },
+                { Keys.D1, "!" },
+                { Keys.D2, "@" },
+                { Keys.D3, "&" },
+                { Keys.D4, "|" },
+                { Keys.D5, "#" },
+                { Keys.D6, "*" },
+                { Keys.D7, Keys.OemQuestion },
+                { Keys.D8, "(" },
+                { Keys.D9, ")" },
+                { Keys.D0, Keys.OemBackslash }
+            };
+
+            shiftTest = (key, state) => state.LShift || state.RShift;
+            shiftKeys = new KeyDictionary
+            {
+                { Keys.Oemtilde, "€" },
+                { Keys.D1, "~" },
+                { Keys.D2, "?" },
+                { Keys.D3, "<" },
+                { Keys.D4, ">" },
+                { Keys.D5, "%" },
+                { Keys.D6, "^" },
+                { Keys.D7, "[" },
+                { Keys.D8, "{" },
+                { Keys.D9, "}" },
+                { Keys.D0, "]" },
+
+                { Keys.Oemplus, "Æ" },
+                { Keys.Oem6, "Ø" },
+                { Keys.Oem5, "Å" },
+
+                { Keys.Oem1, "\"" },
+                { Keys.OemPeriod, ":" },
+                { Keys.Oemcomma, ";" },
+
+                { Keys.OemMinus, "±" },
+                { Keys.OemQuestion, "_" },
+                { Keys.OemOpenBrackets, "≈" }
+            };
+
+            alphaTest = (key, state) => !state.Betta && (state.Alt || state.Ctrl || state.Alpha);
             alphaKeys = new KeyDictionary
             {
                 { Keys.U, Keys.Enter },
@@ -70,19 +82,22 @@ namespace KeyMapperLibrary
                 { Keys.J, Keys.Left },
                 { Keys.K, Keys.Down },
                 { Keys.L, Keys.Right },
-                { Keys.Oemtilde, Keys.End },
+                { Keys.Oem1, Keys.End },
 
                 { Keys.M, Keys.Delete },
                 { Keys.Oemcomma, Keys.Down },
                 { Keys.OemPeriod, Keys.Back },
 
-                { Keys.D7, "{" },
-                { Keys.D8, "[" },
-                { Keys.D9, "]" },
-                { Keys.D0, "}" }
+                { Keys.Oemplus, "`" },
+                { Keys.Oem6, "´" },
+                { Keys.Oem5, "¨" },
+
+                { Keys.OemMinus, "×" },
+                { Keys.OemQuestion, "—" },
+                { Keys.OemOpenBrackets, "≠" }
             };
 
-            bettaCheck = (key, state) => state.Betta;
+            bettaTest = (key, state) => state.Betta;
             bettaKeys = new KeyDictionary
             {
                 { Keys.U, Keys.D7 },
@@ -90,11 +105,10 @@ namespace KeyMapperLibrary
                 { Keys.O, Keys.D9 },
                 { Keys.P, Keys.PageUp },
 
-                { Keys.H, "%" },
                 { Keys.J, Keys.D4 },
                 { Keys.K, Keys.D5 },
                 { Keys.L, Keys.D6 },
-                { Keys.Oemtilde, Keys.D0 },
+                { Keys.Oem1, Keys.D0 },
 
                 { Keys.M, Keys.D1 },
                 { Keys.Oemcomma, Keys.D2 },
@@ -116,19 +130,18 @@ namespace KeyMapperLibrary
 
             Add((key, state) => key.IsAlpha() || key.IsBetta());
 
-            Add("Shift", shiftCheck, shiftKeys);
-            Add("LShift", lShiftCheck, lShiftKeys);
-            Add("Disables", disableCheck, disableKeys);
-            Add("Pure", pureCheck, pureKeys);
-            Add("Alpha", alphaCheck, alphaKeys);
-            Add("Betta", bettaCheck, bettaKeys);
+            Add("Pure", pureTest, pureKeys);
+            Add("Unshift", unshiftTest, unshiftKeys);
+            Add("Shift", shiftTest, shiftKeys);
+            Add("Alpha", alphaTest, alphaKeys);
+            Add("Betta", bettaTest, bettaKeys);
         }
 
-        private void Add(string title, KeyLinstener check, KeyDictionary mappings)
+        private void Add(string title, KeyLinstener test, KeyDictionary mappings)
         {
             Add((key, state) => {
-                if (!check(key, state)) return false;
-                Logger.Log("Check passed: " + title);
+                if (!test(key, state)) return false;
+                Logger.Log("Test passed: " + title);
                 return KeysSender.Send(key, mappings);
             });
         }

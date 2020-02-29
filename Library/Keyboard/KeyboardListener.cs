@@ -13,6 +13,7 @@ namespace KeyMapperLibrary
         private readonly Keyboard.Callback KeyboardCallback;
 
         private bool paused = false;
+        private bool ab = false; // s·—b 
         public void Pause(bool p)
         {
             paused = p;

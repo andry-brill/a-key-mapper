@@ -7,15 +7,18 @@
 
 ## Keyboard mapping
 
+Using US International keyboard to map keyboard keys to my layout ob BLANK keyboard
+
+
 | From || To ||
 | ---- | ------ | ---- | ------ |
 | 00_3A | Caps Lock | 00_38 |Left Alt | 
 | 00_2A | Left Shift | 0064 |F13 __(Alpha)__ | 
-| 00_56 | <> | 00_2A | __Smart Left Shift__ |
+| 00_56 | ISO extrakey (\\) | 00_2A | __Left Shift__ |
+| 00_28 | Single Quot | 00_2A | __Right Shift__ |
+| 00_2A | __Right Shift__ | 00_28 | Single Quot |
 | E0_5B | Left Windows | 00_65 | F14 __(Betta)__ |  
-| 00_38 | Left Alt | E0_5B | Left Windows | 
-| E0_1D | Right Ctrl | 00_66 | F15 |   
-| 00_1B | ]} | 00_56 | <> | 
+| 00_38 | Left Alt | E0_5B | Left Windows |
 
  
 
@@ -37,7 +40,9 @@ On changes sync the next files:
 || __+Shift+__ | Expansion/extension/boost  |
 |◆| __Arrows__ | _Ctrl+_ has standard behavior in all OS |
 || Alt+Right | To right tab |
+|| Alt+Shift+Right | To right group of tabs |
 || Alt+Left | To left tab |
+|| Alt+Shift+Left | To left group of tabs |
 || Alt+Up | Move line up |
 || Alt+Down | Move line down |
 |◆| __S__
@@ -60,9 +65,9 @@ On changes sync the next files:
 || Ctrl+Shift+Z | Undo all |
 || Alt+Z | Redo |
 || Alt+Shift+Z | Redo all |
-|◆| __/__ _or_ __-__
+|◆| __/__
 || Ctrl+/ | Comment |
-|| Ctrl+Shift+/ | Block-Comment |
+|| Alt+/ | Block-Comment |
 |◆| __E__
 || Ctrl+E | Edit (open) type by name |
 || Ctrl+Shift+E | Edit (open) resource by name |
@@ -74,8 +79,5 @@ On changes sync the next files:
 |◆| __Space__
 || Ctrl+Space | Show code helper |
 || Ctrl+Shift+Space | Quick fix |
-|| Shift+Space | Align code by spaces |
 |◆| __Misc__
-|| Ctrl+' | Toggle quotes '->"->` |
 || Ctrl+< | Organize imports |
-|| F13 | Run action |
