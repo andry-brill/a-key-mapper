@@ -7,8 +7,8 @@ namespace KeyMapperLibrary
     {
         public delegate bool KeyLinstener(Keys keys, KeyboardState keyboardState);
 
-        private readonly static KeyLinstener pureTest, unshiftTest, shiftTest, unctrlTest, ctrlTest, alphaTest, bettaTest;
-        private readonly static KeyDictionary pureKeys, unshiftKeys, shiftKeys, unctrlKeys, ctrlKeys, alphaKeys, bettaKeys;
+        private readonly static KeyLinstener pureTest, unshiftTest, shiftTest, pureShiftTest, unctrlTest, ctrlTest, alphaTest, bettaTest;
+        private readonly static KeyDictionary pureKeys, unshiftKeys, shiftKeys, pureShiftKeys, unctrlKeys, ctrlKeys, alphaKeys, bettaKeys;
 
         static KeyMappings()
         {
@@ -61,13 +61,18 @@ namespace KeyMapperLibrary
                 { Keys.Oemplus, "Æ" },
                 { Keys.Oem6, "Ø" },
                 { Keys.Oem5, "Å" },
+            };
 
+            pureShiftTest = (key, state) => (state.LShift || state.RShift) && !state.Betta && !state.Alpha && !state.Ctrl;
+            pureShiftKeys = new KeyDictionary
+            {
                 { Keys.Oem1, "\"" },
+
+                { Keys.OemQuestion, "_" },
                 { Keys.OemPeriod, ":" },
                 { Keys.Oemcomma, ";" },
 
                 { Keys.OemOpenBrackets, "´" },
-                { Keys.OemQuestion, "_" },
                 { Keys.OemMinus, "`" }
             };
 
@@ -146,6 +151,7 @@ namespace KeyMapperLibrary
             Add("Pure", pureTest, pureKeys);
             Add("Unshift", unshiftTest, unshiftKeys);
             Add("Shift", shiftTest, shiftKeys);
+            Add("PureShift", pureShiftTest, pureShiftKeys);
             Add("Unctrl", unctrlTest, unctrlKeys);
             Add("Ctrl", ctrlTest, ctrlKeys);
             Add("Alpha", alphaTest, alphaKeys);
