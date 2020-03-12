@@ -80,9 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Keyboard\KeyboardCallback.cs" />
+    <Compile Include="KeyMappings\KeyboardLocale.cs" />
     <Compile Include="KeyMappings\KeyMappings.cs" />
     <Compile Include="KeyMappings\KeyDictionary.cs" />
     <Compile Include="KeyMappings\KeySequience.cs" />
+    <Compile Include="KeyMappings\LocaleDictionary.cs" />
     <Compile Include="Utils\Window.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Keyboard\KeyboardListener.cs" />

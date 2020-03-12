@@ -49,7 +49,7 @@ namespace KeyMapperLibrary
         {
             return key == Keys.F13;
         }
-        public static bool IsBetta(this Keys key)
+        public static bool IsBeta(this Keys key)
         {
             return key == Keys.F14;
         }

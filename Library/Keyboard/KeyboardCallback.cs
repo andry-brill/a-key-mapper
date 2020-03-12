@@ -6,7 +6,7 @@ namespace KeyMapperLibrary
 {
     public static partial class Keyboard
     {
-        public delegate bool KeyboardCallback(Keys keys, bool isKeyDown);
+        public delegate bool KeyboardCallback(Keys keys, bool isKeyDown, int locale);
 
         public class Callback : IDisposable
         {
@@ -36,17 +36,20 @@ namespace KeyMapperLibrary
                 int eventType = (int)wParam;
                 int vkCode = Marshal.ReadInt32(lParam);
                 Keys key = (Keys)vkCode;
+                
+                int keyboardLayout = GetKeyboardLayout();
+                Logger.Log("KeyboardLayout: " + keyboardLayout);
 
                 if (eventType == WM_KEYDOWN || eventType == WM_SYSKEYDOWN)
                 {
                     Logger.Log("Down Key: " + key + " Code: " + vkCode);
-                    cancel = Function(key, true);
+                    cancel = Function(key, true, keyboardLayout);
                 }
 
                 if (eventType == WM_KEYUP || eventType == WM_SYSKEYUP)
                 {
                     Logger.Log("Up Key: " + key + " Code: " + vkCode);
-                    cancel = Function(key, false);
+                    cancel = Function(key, false, keyboardLayout);
                 }
 
                 return cancel ? ONE : CallNextHookEx(HookID, nCode, wParam, lParam);

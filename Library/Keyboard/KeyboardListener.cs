@@ -13,7 +13,6 @@ namespace KeyMapperLibrary
         private readonly Keyboard.Callback KeyboardCallback;
 
         private bool paused = false;
-        private bool ab = false; // s·—b 
         public void Pause(bool p)
         {
             paused = p;
@@ -25,10 +24,10 @@ namespace KeyMapperLibrary
             KeyboardCallback = new Keyboard.Callback(Callback);
         }
 
-        private bool Callback(Keys key, bool isKeyDown)
+        private bool Callback(Keys key, bool isKeyDown, int keyboardLayout)
         {
-            KeyboardState.UpdateState(key, isKeyDown);
-            
+            KeyboardState.UpdateState(key, isKeyDown, keyboardLayout);
+
             if (OnKey == null || paused)
             {
                 Logger.Log("Ignored");

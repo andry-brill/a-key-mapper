@@ -1,7 +1,7 @@
 
 ## Keyboard modifications
 
-1. __Alpha (F13)__ and __Betta (F14)__ keys
+1. __Alpha (F13)__ and __Beta (F14)__ keys
 2. __Smart Left Shift__ works as Ctrl on the left part of keyboards letters
 3. Letters on the right part of keyboard is reserved and uses in mappings as soft-keys
 
@@ -14,10 +14,10 @@ Using US International keyboard to map keyboard keys to my layout ob BLANK keybo
 | ---- | ------ | ---- | ------ |
 | 00_3A | Caps Lock | 00_38 |Left Alt | 
 | 00_2A | Left Shift | 0064 |F13 __(Alpha)__ | 
-| 00_56 | ISO extrakey (\\) | 00_2A | __Left Shift__ |
+| 00_56 | ISO extra-key (\\) | 00_2A | __Left Shift__ |
 | 00_28 | Single Quot | 00_2A | __Right Shift__ |
 | 00_2A | __Right Shift__ | 00_28 | Single Quot |
-| E0_5B | Left Windows | 00_65 | F14 __(Betta)__ |  
+| E0_5B | Left Windows | 00_65 | F14 __(Beta)__ |  
 | 00_38 | Left Alt | E0_5B | Left Windows |
 
  
@@ -40,7 +40,7 @@ https://github.com/ijprest/keyboard-layout-editor/
 
 |◆| Key | Action |
 | - | ---- | ------ |
-|◆| __Ideologic__
+|◆| __Ideology__
 || __Ctrl+__ | Command |
 || __Alt+__ | Similar command or anti-command |
 || __+Shift+__ | Expansion/extension/boost  |

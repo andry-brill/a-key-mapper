@@ -6,6 +6,7 @@ namespace KeyMapperLibrary
 {
     public static partial class Keyboard
     {
+        private const int FALLBACK_KEYBOARD_LAYOUT = 1033; // en-US
 
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100, WM_KEYUP = 0x0101;
@@ -30,8 +31,20 @@ namespace KeyMapperLibrary
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
+        [DllImport("user32.dll")] 
+        public static extern IntPtr GetForegroundWindow();
 
+        [DllImport("user32.dll")] 
+        private static extern IntPtr GetKeyboardLayout(uint thread);
+        
+        [DllImport("user32.dll")] 
+        private static extern uint GetWindowThreadProcessId(IntPtr hwnd, IntPtr proccess);
+
+        public static int GetKeyboardLayout() {
+            IntPtr foregroundWindow = GetForegroundWindow();
+            uint id = GetWindowThreadProcessId(foregroundWindow, IntPtr.Zero);
+            return GetKeyboardLayout(id).ToInt32() & 0xFFFF;
+        }
+        
     }
 }

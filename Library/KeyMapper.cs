@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace KeyMapperLibrary
 {
@@ -11,7 +10,7 @@ namespace KeyMapperLibrary
 
         static KeyMapper()
         {
-            KeySender = new KeySender();
+            KeySender = new KeySender(ResolveLocale);
             KeySender.OnBeforeSend += () => keyboardListener?.Pause(true);
             KeySender.OnAfterSend += () => keyboardListener?.Pause(false);
 
@@ -20,13 +19,18 @@ namespace KeyMapperLibrary
             KeyboardState = new KeyboardState();
         }
 
+        private static KeyboardLocale ResolveLocale(int keyboardLayout)
+        {
+            return keyboardLayout == (int)KeyboardLocale.ru_RU ? KeyboardLocale.ru_RU : KeyboardLocale.en_US;
+        }
+
         private static KeyboardListener keyboardListener = null;
 
         public static void Start()
         {
-            Logger.Log("Start");
-            Stop();
+            Stop(); // releasing resources
 
+            Logger.Log("Start");
             keyboardListener = new KeyboardListener(KeyboardState);
             foreach (var mapper in KeyMappings.Mappings)
                 keyboardListener.OnKey += mapper;
