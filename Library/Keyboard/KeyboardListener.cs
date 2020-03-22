@@ -12,6 +12,8 @@ namespace KeyMapperLibrary
         private readonly KeyboardState KeyboardState;
         private readonly Keyboard.Callback KeyboardCallback;
 
+        private bool suspended = false;
+
         private bool paused = false;
         public void Pause(bool p)
         {
@@ -28,7 +30,14 @@ namespace KeyMapperLibrary
         {
             KeyboardState.UpdateState(key, isKeyDown, keyboardLayout);
 
-            if (OnKey == null || paused)
+            if (isKeyDown && key == Keys.RMenu) // LMenu == Alt
+            {
+                suspended = !suspended;
+                Logger.Log("Suspended: " + suspended);
+                return true;
+            }
+
+            if (OnKey == null || paused || suspended)
             {
                 Logger.Log("Ignored");
                 return false;
