@@ -47,7 +47,7 @@ namespace KeyMapperLibrary
                     { Keys.D4, "|" },
                     { Keys.D5, "#" },
                     { Keys.D6, "*" },
-                    { Keys.D7, Keys.OemQuestion },
+                    { Keys.D7, AnyRu(Keys.OemQuestion, "/") },
                     { Keys.D8, "(" },
                     { Keys.D9, ")" },
                     { Keys.D0, Keys.OemBackslash }
