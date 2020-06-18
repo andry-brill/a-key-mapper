@@ -12,15 +12,15 @@ Using US International keyboard to map keyboard keys to my layout ob BLANK keybo
 
 | From || To ||
 | ---- | ------ | ---- | ------ |
-| 00_3A | Caps Lock | 00_38 |Left Alt | 
-| 00_2A | Left Shift | 0064 |F13 __(Alpha)__ | 
+| 00_3A | Caps Lock | 00_38 |Left Alt |
+| 00_2A | Left Shift | 0064 |F13 __(Alpha)__ |
 | 00_56 | ISO extra-key (\\) | 00_2A | __Left Shift__ |
 | 00_28 | Single Quot | 00_2A | __Right Shift__ |
 | 00_2A | __Right Shift__ | 00_28 | Single Quot |
-| E0_5B | Left Windows | 00_65 | F14 __(Beta)__ |  
+| E0_5B | Left Windows | 00_65 | F14 __(Beta)__ |
 | 00_38 | Left Alt | E0_5B | Left Windows |
 
- 
+
 
 ## Keybindings
 
@@ -28,11 +28,12 @@ On changes sync the next files:
 
  * __keybindings.json__ for Visual Studio Code
  * __keybindings.epf__ for Eclipse
+ * __keybindings.vssetttings__ for Visual Studio
 
 
 ## Keyboard layout
 
-Layout created on http://www.keyboard-layout-editor.com/ and saved into `keyboard-layout-json.txt` 
+Layout created on http://www.keyboard-layout-editor.com/ and saved into `keyboard-layout-json.txt`
 Link: http://www.keyboard-layout-editor.com/#/gists/06d336af7937bd5f3ece4cabee23d736
 https://github.com/ijprest/keyboard-layout-editor/
 
@@ -61,7 +62,7 @@ https://github.com/ijprest/keyboard-layout-editor/
 || Alt+Shift+F | Find all usages in files |
 |◆| __N__
 || Ctrl+N | New file |
-|| Ctrl+Shift+N | New folder 
+|| Ctrl+Shift+N | New folder
 |◆| __R__
 || Ctrl+R | Replace in file |
 || Ctrl+Shift+R | Replace in files |
