@@ -168,21 +168,17 @@ namespace KeyMapperLibrary
             );
 
 
-            void addRu(Keys key, string letter)
+            void addRu(Keys key, string letter, string betaLetter = null)
             {
                 AddRu(pure, key, letter.ToLower());
                 AddRu(pureShift, key, letter.ToUpper());
+                if (betaLetter != null) AddRu(beta, key, betaLetter);
             }
 
-            addRu(Keys.Q, "Я");
-            AddRu(beta, Keys.Q, "ї");
-
-            addRu(Keys.W, "Ж");
-            
-            addRu(Keys.E, "Е");
-            AddRu(beta, Keys.E, "ё");
-
-            addRu(Keys.R, "Р");
+            addRu(Keys.Q, "Я", "ї");
+            addRu(Keys.W, "Ж", "і");
+            addRu(Keys.E, "Е", "ё");
+            addRu(Keys.R, "Р", "є");
             addRu(Keys.T, "Т");
             addRu(Keys.Y, "У");
             
@@ -192,7 +188,6 @@ namespace KeyMapperLibrary
             addRu(Keys.P, "П");
             
             addRu(Keys.A, "А");
-            AddRu(beta, Keys.A, "і");
             addRu(Keys.S, "С");
             addRu(Keys.D, "Д");
             addRu(Keys.F, "Ф");
