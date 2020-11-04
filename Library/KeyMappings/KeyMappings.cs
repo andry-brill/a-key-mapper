@@ -83,8 +83,8 @@ namespace KeyMapperLibrary
                     { Keys.OemPeriod, ":" },
                     { Keys.Oemcomma, ";" },
 
-                    { Keys.OemOpenBrackets, "´" },
-                    { Keys.OemMinus, "`" },
+                    { Keys.OemOpenBrackets, "±" },
+                    { Keys.OemMinus, "≈" },
 
                     { Keys.Oemplus, AnyRu("Æ", "Э")},
                     { Keys.Oem6, AnyRu("Ø", "Щ") },
@@ -175,6 +175,8 @@ namespace KeyMapperLibrary
             }
 
             addRu(Keys.Q, "Я");
+            AddRu(beta, Keys.Q, "ї");
+
             addRu(Keys.W, "Ж");
             
             addRu(Keys.E, "Е");
@@ -190,6 +192,7 @@ namespace KeyMapperLibrary
             addRu(Keys.P, "П");
             
             addRu(Keys.A, "А");
+            AddRu(beta, Keys.A, "і");
             addRu(Keys.S, "С");
             addRu(Keys.D, "Д");
             addRu(Keys.F, "Ф");
@@ -207,8 +210,8 @@ namespace KeyMapperLibrary
             addRu(Keys.N, "Н");
             addRu(Keys.M, "М");
 
-            AddRu(pure, Keys.Oem7, "ь");
-            AddRu(pureShift, Keys.Oem7, "ы");
+            AddAnyRu(pure, Keys.Oem7, "`", "ь");
+            AddAnyRu(pureShift, Keys.Oem7, "´", "ы");
             AddRu(beta, Keys.Oem7, "ъ");
 
         }
@@ -221,6 +224,18 @@ namespace KeyMapperLibrary
             } else
             {
                 dictionary.Add(key, Ru(letter));
+            }
+        }
+
+        private static void AddAnyRu(KeyDictionary dictionary, Keys key, object any, string letter)
+        {
+            if (dictionary.ContainsKey(key))
+            {
+                throw new Exception("Duplicate key: " + key);
+            }
+            else
+            {
+                dictionary.Add(key, AnyRu(any, letter));
             }
         }
 
