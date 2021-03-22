@@ -28,9 +28,9 @@ namespace KeyMapperApplication
                 return;
             }
             try {
-                KeyMapper.Start();
+                KeyMapperLibrary.KeyMapper.Start();
                 Application.Run();
-                KeyMapper.Stop();
+                KeyMapperLibrary.KeyMapper.Stop();
             } catch (Exception e)
             {
                 using (StreamWriter sw = File.AppendText("log.txt"))
