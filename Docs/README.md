@@ -20,7 +20,7 @@ Using US International keyboard to map keyboard keys to my layout ob BLANK keybo
 | E0_5B | Left Windows | 00_65 | F14 __(Beta)__ |
 | 00_38 | Left Alt | E0_5B | Left Windows |
 
-
+![AKeyboard](dashkeyboard.png)
 
 ## Keybindings
 
