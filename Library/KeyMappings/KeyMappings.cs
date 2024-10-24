@@ -28,9 +28,9 @@ namespace KeyMapperLibrary
 
                     { Keys.Oem1, "'" },
 
-                    { Keys.Oemplus, AnyRu("æ", "э") },
-                    { Keys.Oem6, AnyRu("ø", "щ") },
-                    { Keys.Oem5, AnyRu("å", "ш") },
+                    { Keys.Oemplus, AnyUa("æ", "є") },
+                    { Keys.Oem6, AnyUa("ø", "щ") },
+                    { Keys.Oem5, AnyUa("å", "ш") },
 
                     { Keys.OemPeriod, "." },
                     { Keys.Oemcomma, "," }
@@ -47,7 +47,7 @@ namespace KeyMapperLibrary
                     { Keys.D4, "|" },
                     { Keys.D5, "#" },
                     { Keys.D6, "*" },
-                    { Keys.D7, AnyRu(Keys.OemQuestion, "/") },
+                    { Keys.D7, AnyUa(Keys.OemQuestion, "/") },
                     { Keys.D8, "(" },
                     { Keys.D9, ")" },
                     { Keys.D0, Keys.OemBackslash }
@@ -86,9 +86,9 @@ namespace KeyMapperLibrary
                     { Keys.OemOpenBrackets, "±" },
                     { Keys.OemMinus, "≈" },
 
-                    { Keys.Oemplus, AnyRu("Æ", "Э")},
-                    { Keys.Oem6, AnyRu("Ø", "Щ") },
-                    { Keys.Oem5, AnyRu("Å", "Ш") }
+                    { Keys.Oemplus, AnyUa("Æ", "Є")},
+                    { Keys.Oem6, AnyUa("Ø", "Щ") },
+                    { Keys.Oem5, AnyUa("Å", "Ш") }
                 }
             );
 
@@ -160,69 +160,69 @@ namespace KeyMapperLibrary
                     { Keys.C, KS.Down(Keys.LControlKey, Keys.Insert).Build() },
                     { Keys.V, KS.Down(Keys.LShiftKey, Keys.Insert).Build() },
 
-                    { Keys.Oemplus, AnyRu("Æ", "Ъ")},
-                    { Keys.Oem6, AnyRu("Ø", "Ы") },
-                    { Keys.Oem5, AnyRu("Å", "Ь") }
+                    { Keys.Oemplus, AnyUa("æ", "И")},
+                    { Keys.Oem6, AnyUa("ø", "Ь") },
+                    { Keys.Oem5, AnyUa("å", "Ї") }
 
                 }
             );
 
 
-            void addRu(Keys key, string letter, string betaLetter = null)
+            void addUa(Keys key, string letter, string betaLetter = null)
             {
-                AddRu(pure, key, letter.ToLower());
-                AddRu(pureShift, key, letter.ToUpper());
-                if (betaLetter != null) AddRu(beta, key, betaLetter);
+                AddUa(pure, key, letter.ToLower());
+                AddUa(pureShift, key, letter.ToUpper());
+                if (betaLetter != null) AddUa(beta, key, betaLetter);
             }
 
-            addRu(Keys.Q, "Я", "ї");
-            addRu(Keys.W, "Ж", "і");
-            addRu(Keys.E, "Е", "ё");
-            addRu(Keys.R, "Р", "є");
-            addRu(Keys.T, "Т");
-            addRu(Keys.Y, "У");
+            addUa(Keys.Q, "Я");
+            addUa(Keys.W, "Ж");
+            addUa(Keys.E, "Е");
+            addUa(Keys.R, "Р");
+            addUa(Keys.T, "Т");
+            addUa(Keys.Y, "У");
             
-            addRu(Keys.U, "Ю");
-            addRu(Keys.I, "И");
-            addRu(Keys.O, "О");
-            addRu(Keys.P, "П");
+            addUa(Keys.U, "Ю");
+            addUa(Keys.I, "І");
+            addUa(Keys.O, "О");
+            addUa(Keys.P, "П");
             
-            addRu(Keys.A, "А");
-            addRu(Keys.S, "С");
-            addRu(Keys.D, "Д");
-            addRu(Keys.F, "Ф");
-            addRu(Keys.G, "Г");
-            addRu(Keys.H, "Х");
-            addRu(Keys.J, "Й");
-            addRu(Keys.K, "К");
-            addRu(Keys.L, "Л");
+            addUa(Keys.A, "А");
+            addUa(Keys.S, "С");
+            addUa(Keys.D, "Д");
+            addUa(Keys.F, "Ф");
+            addUa(Keys.G, "Г");
+            addUa(Keys.H, "Х");
+            addUa(Keys.J, "Й");
+            addUa(Keys.K, "К");
+            addUa(Keys.L, "Л");
 
-            addRu(Keys.Z, "З");
-            addRu(Keys.X, "Ч");
-            addRu(Keys.C, "Ц");
-            addRu(Keys.V, "В");
-            addRu(Keys.B, "Б");
-            addRu(Keys.N, "Н");
-            addRu(Keys.M, "М");
+            addUa(Keys.Z, "З");
+            addUa(Keys.X, "Ч");
+            addUa(Keys.C, "Ц");
+            addUa(Keys.V, "В");
+            addUa(Keys.B, "Б");
+            addUa(Keys.N, "Н");
+            addUa(Keys.M, "М");
 
-            AddAnyRu(pure, Keys.Oem7, "`", "ь");
-            AddAnyRu(pureShift, Keys.Oem7, "´", "ы");
-            AddRu(beta, Keys.Oem7, "ъ");
+            AddAnyUa(pure, Keys.Oem7, "`", "и");
+            AddAnyUa(pureShift, Keys.Oem7, "´", "ь");
+            AddUa(beta, Keys.Oem7, "ї");
 
         }
 
-        private static void AddRu(KeyDictionary dictionary, Keys key, string letter)
+        private static void AddUa(KeyDictionary dictionary, Keys key, string letter)
         {
             if (dictionary.ContainsKey(key))
             {
                 throw new Exception("Duplicate key: " + key);
             } else
             {
-                dictionary.Add(key, Ru(letter));
+                dictionary.Add(key, Ua(letter));
             }
         }
 
-        private static void AddAnyRu(KeyDictionary dictionary, Keys key, object any, string letter)
+        private static void AddAnyUa(KeyDictionary dictionary, Keys key, object any, string letter)
         {
             if (dictionary.ContainsKey(key))
             {
@@ -230,24 +230,24 @@ namespace KeyMapperLibrary
             }
             else
             {
-                dictionary.Add(key, AnyRu(any, letter));
+                dictionary.Add(key, AnyUa(any, letter));
             }
         }
 
-        private static LocaleDictionary AnyRu(object any, object ru)
+        private static LocaleDictionary AnyUa(object any, object ua)
         {
             return new LocaleDictionary
             {
                 { KeyboardLocale.ANY_OTHER, any },
-                { KeyboardLocale.ru_RU, ru }
+                { KeyboardLocale.uk_UA, ua }
             };
         }
 
-        private static LocaleDictionary Ru(object ru)
+        private static LocaleDictionary Ua(object ua)
         {
             return new LocaleDictionary
             {
-                { KeyboardLocale.ru_RU, ru }
+                { KeyboardLocale.uk_UA, ua }
             };
         }
 

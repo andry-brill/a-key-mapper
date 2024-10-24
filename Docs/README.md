@@ -34,8 +34,6 @@ On changes sync the next files:
 ## Keyboard layout
 
 Layout created on http://www.keyboard-layout-editor.com/ and saved into `keyboard-layout-json.txt`
-Link: http://www.keyboard-layout-editor.com/#/gists/06d336af7937bd5f3ece4cabee23d736
-https://github.com/ijprest/keyboard-layout-editor/
 
 ## Hot-keys
 

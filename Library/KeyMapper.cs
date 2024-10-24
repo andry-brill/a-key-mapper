@@ -21,7 +21,7 @@ namespace KeyMapperLibrary
 
         private static KeyboardLocale ResolveLocale(int keyboardLayout)
         {
-            return keyboardLayout == (int)KeyboardLocale.ru_RU ? KeyboardLocale.ru_RU : KeyboardLocale.en_US;
+            return keyboardLayout == (int)KeyboardLocale.uk_UA ? KeyboardLocale.uk_UA : KeyboardLocale.en_US;
         }
 
         private static KeyboardListener keyboardListener = null;

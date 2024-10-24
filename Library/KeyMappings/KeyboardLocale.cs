@@ -4,7 +4,7 @@
     {
         ANY_OTHER = 0,
         en_US = 1033,
-        ru_RU = 1049
+        uk_UA = 1058
     }
 
 }

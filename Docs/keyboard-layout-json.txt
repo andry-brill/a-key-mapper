@@ -1,5 +1,5 @@
-﻿[{a:5},"€\n$","~\n!","?\n@","<\n&",">\n|","%\n#","^\n*","[\n/","{\n(","}\n)","]\n\\",{a:4},"`\n=\n=\n=","Э\nэ\nЪ\n\n\n\n\n\n\nÆ"],
-[{a:7,w:1.5},"Tab",{a:4},"Я\nQ","Ж\nW","E\nE\nё","P\nR","Т\nT","У\nY",{a:0},"Ю\nU\n7\n↛\n\nEnter","И\nI\n8\n🡩\n\nUp","O\nO\n9\n↚\n\nEsc","П\nP\n.\n⮥\n\nPgUp",{a:4},"´\n+\n+\n+","Щ\nщ\nЫ\n\n\n\n\n\n\nØ"],
-[{a:7,w:1.75},"Alt",{a:4},"А\nA","С\nS","Д\nD","Ф\nF","Г\nG",{a:0},"X\nH\n\n|🠄\n\nHome","Й\nJ\n4\n🡨\n\nLeft","К\nK\n5\n🡫\n\nDown","Л\nL\n6\n🡪\n\nRight","\"\n'\n0\n⮧\n\nPgDw","_\n-\n-\n🠆|\n\nEnd",{a:4},"Ш\nш\nЬ\n\n\n\n\n\n\nÅ"],
-[{w:1.25},"\n\n\n𝛼\n\n\n\n\n\nAction",{a:7},"LShift",{a:4},"З\nZ","Ч\nX","Ц\nC","В\nV","Б\nB","Н\nN",{a:0},"М\nM\n1\n⌦\n\nDel",";\n,\n2\n🡫\n\nDown",":\n.\n3\n⌫\n\nBack",{a:7},"RShift",{a:4},"ы\nь\nъ\n\n\n\n\n\n\nÄá"],
-[{a:7,w:1.25},"Control",{a:4,w:1.25},"\n\n𝛽\n\n\n\n\n\n\nNumber",{a:7,w:1.25},"Window",{w:6.25},""]
+﻿[{a:5},"€\n$","~\n!","?\n@","<\n&",">\n|","%\n#","^\n*","[\n/","{\n(","}\n)","]\n\\",{a:4},"`\n=\n=\n=","Є\nє\nИ\n\n\n\n\n\n\nÆ"],
+[{a:7,w:1.5},"Tab",{a:4},"Я\nQ","Ж\nW","E\nE","P\nR","Т\nT","У\nY",{a:0},"Ю\nU\n7\n↛\n\nEnter","І\nI\n8\n🡩\n\nUp","O\nO\n9\n↚\n\nEsc","П\nP\n.\n⮥\n\nPgUp",{a:4},"´\n+\n+\n+","Щ\nщ\nЬ\n\n\n\n\n\n\nØ"],
+[{a:7,w:1.75},"Alt",{a:4},"А\nA","С\nS","Д\nD","Ф\nF","Г\nG",{a:0},"X\nH\n\n|🠄\n\nHome","Й\nJ\n4\n🡨\n\nLeft","К\nK\n5\n🡫\n\nDown","Л\nL\n6\n🡪\n\nRight","\"\n'\n0\n⮧\n\nPgDw","_\n-\n-\n🠆|\n\nEnd",{a:4},"Ш\nш\nЇ\n\n\n\n\n\n\nÅ"],
+[{w:1.25},"\n\n\n𝛼\n\n\n\n\n\nAction","ʃ\n\n\n\n\n\n\n\n\nLShift","З\nZ","Ч\nX","Ц\nC","В\nV","Б\nB","Н\nN",{a:0},"М\nM\n1\n⌦\n\nDel",";\n,\n2\n🡫\n\nDown",":\n.\n3\n⌫\n\nBack",{a:4},"ʃ\n\n\n\n\n\n\n\n\nRShift","´/ь\nи\nї\n\n\n\n\n\n\n`"],
+[{a:7,w:1.25},"Control",{a:4,w:1.25},"\n\n𝛽\n\n\n\n\n\n\nNumber",{w:1.25},"\nυα\n\n\n\n\n\n\n\nWindow",{a:7,w:6.25},""]
